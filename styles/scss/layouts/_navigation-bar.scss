@@ -1,0 +1,90 @@
+@use "../abstracts/mixins" as m;
+
+header {
+  @include m.flex(row, center, flex-start);
+  padding: var(--size-small);
+}
+
+.nav {
+  &__hamburger {
+    order: -1;
+    position: absolute;
+    right: var(--size-small);
+    cursor: pointer;
+  }
+
+  & ul {
+    @include m.flex(row);
+    gap: var(--size-small);
+  }
+
+  & li {
+    list-style: none;
+  }
+
+  & a {
+    text-transform: lowercase;
+    text-decoration: none;
+    color: var(--color--primary);
+    transition: 500ms ease;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--color-secondary);
+      transition: 200ms ease;
+    }
+  }
+
+  &--desktop {
+    display: none;
+  }
+
+  &--mobile {
+    position: relative;
+    @include m.flex(row, center, space-between);
+    background: var(--color-primary);
+    padding: var(--size-medium);
+    gap: var(--size-medium);
+    width: 100%;
+
+    & #close-button {
+      background: none;
+      border: none;
+      font-size: var(--size-font-small);
+      color: var(--color-secondary);
+    }
+
+    & #close-button:hover {
+      cursor: pointer;
+    }
+  }
+
+  &--dialog {
+    width: 100vw;
+    border: none;
+    max-width: none;
+    margin: none;
+
+    &::backdrop {
+      background: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+@media screen and (min-width: 43rem) {
+  .nav {
+    &__hamburger {
+      display: none;
+    }
+
+    &--mobile {
+      display: none;
+    }
+
+    &--desktop {
+      @include m.flex(row);
+      gap: var(--size-small);
+      width: fit-content;
+    }
+  }
+}

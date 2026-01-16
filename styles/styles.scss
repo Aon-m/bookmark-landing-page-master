@@ -1,0 +1,17 @@
+// Abstracts (variables, mixins, functions)
+@use "scss/abstracts/mixins" as m;
+
+// Base / Reset
+@use "scss/base/reset";
+@use "scss/base/base";
+
+// Components
+@use "scss/components/card";
+
+// Layout
+@use "scss/layouts/container";
+@use "scss/layouts/navigation-bar";
+
+body {
+  overflow-x: hidden;
+}
