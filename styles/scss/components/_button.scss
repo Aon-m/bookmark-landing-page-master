@@ -1,0 +1,50 @@
+@use "../abstracts/mixins" as m;
+
+.button {
+  @include m.font(
+    "Rubik",
+    var(--font-weight-regular),
+    var(--size-font-smaller)
+  );
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  &--primary {
+    color: var(--color-contrast-secondary);
+    background: var(--color-primary);
+  }
+
+  &--secondary {
+    color: var(--color-contrast-secondary);
+    background: var(--color-secondary);
+  }
+
+  &--contrast {
+    color: var(--color-contrast-primary);
+    background: var(--color-contrast-secondary);
+    box-shadow: 0 calc(var(--size-tiny) - 0.1rem) var(--size-tiny)
+      var(--color-accent-border);
+  }
+  &--rectangle {
+    padding: calc(var(--size-smaller) + 0.3rem) calc(var(--size-small) - 0.3rem);
+    border-radius: var(--size-tiny);
+  }
+  &--content-changer {
+    font-weight: var(--font-weight-thin);
+    padding: 0 var(--size-small) calc(var(--size-smaller) + 0.2rem);
+
+    &--selected {
+      border-block-end: 0.2rem solid var(--color-secondary);
+    }
+  }
+}
+
+@media screen and (min-width: 65rem) {
+  .button {
+    &--rectangle {
+      padding: var(--size-smaller) calc(var(--size-small) - 0.5rem);
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 header {
   @include m.flex(row, center, flex-start);
-  padding: var(--size-small);
+  padding: var(--size-medium);
 }
 
 .nav {
@@ -71,7 +71,12 @@ header {
   }
 }
 
-@media screen and (min-width: 43rem) {
+@media screen and (min-width: 40rem) {
+  header {
+    padding: var(--size-small) var(--size-large) 0;
+    justify-content: space-between;
+  }
+
   .nav {
     &__hamburger {
       display: none;
@@ -85,6 +90,26 @@ header {
       @include m.flex(row);
       gap: var(--size-small);
       width: fit-content;
+
+      & a {
+        width: var(--size-large);
+        text-transform: uppercase;
+        @include m.font(
+          "Rubik",
+          var(--font-weight-thin),
+          calc(var(--size-font-small) - 0.25rem)
+        );
+      }
+
+      & button {
+        text-transform: uppercase;
+        @include m.font(
+          "Rubik",
+          var(--font-weight-thin),
+          calc(var(--size-font-small) - 0.25rem)
+        );
+        padding: calc(var(--size-tiny) + 0.2rem) var(--size-small);
+      }
     }
   }
 }

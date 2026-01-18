@@ -1,0 +1,86 @@
+@use "../abstracts/mixins" as m;
+
+footer {
+  display: grid;
+  grid-template:
+    "logo" auto
+    "links" auto
+    "icons" auto
+    "attribution" auto/ 1fr;
+  gap: var(--size-small);
+  width: 100%;
+  background-color: var(--color-secondary);
+  font-family: "Alata", sans-serif;
+  font-size: var(--font-size--base);
+  background: var(--color-contrast-primary);
+  padding: var(--size-medium);
+
+  & > * {
+    align-self: center;
+    justify-self: center;
+  }
+
+  & a {
+    color: var(--color-primary);
+  }
+}
+
+.footer {
+  &__logo {
+    grid-area: logo;
+    color: var(--color-contrast-secondary);
+  }
+
+  &__icons {
+    grid-area: icons;
+    @include m.flex(row);
+    gap: var(--size-medium);
+
+    & svg {
+      color: var(--color-contrast-secondary);
+    }
+  }
+
+  &__links {
+    grid-area: links;
+    @include m.flex(column);
+    color: var(--color-contrast-secondary);
+    gap: var(--size-small);
+    margin-block-end: var(--size-small);
+
+    & li {
+      list-style: none;
+    }
+    & a {
+      text-decoration: none;
+    }
+  }
+}
+
+@media screen and (min-width: 40rem) {
+  footer {
+    grid-template:
+      "logo links icons" 1fr
+      "attribution attribution attribution" auto/ auto 1fr auto;
+    align-items: center;
+    justify-content: center;
+    padding: var(--size-small) calc(var(--size-large) + 1rem)
+      var(--size-smaller);
+  }
+
+  .footer {
+    &__logo {
+      justify-self: start;
+    }
+    &__icons {
+      justify-self: end;
+    }
+
+    &__links {
+      margin-block-end: 0;
+      justify-self: flex-start;
+      flex-direction: row;
+      margin-inline-start: var(--size-medium);
+    }
+  }
+}
