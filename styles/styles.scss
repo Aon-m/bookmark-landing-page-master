@@ -7,11 +7,88 @@
 
 // Components
 @use "scss/components/card";
+@use "scss/components/button";
+@use "scss/components/attribution";
 
 // Layout
 @use "scss/layouts/container";
 @use "scss/layouts/navigation-bar";
+@use "scss/layouts/footer";
 
 body {
   overflow-x: hidden;
+}
+
+main {
+  @include m.flex(column);
+  gap: var(--size-large);
+}
+
+.newsletter {
+  @include m.flex(column);
+  background: var(--color-primary);
+  width: 100%;
+  gap: var(--size-small);
+  padding-block: var(--size-large);
+  color: var(--color-contrast-secondary);
+
+  &__count {
+    @include m.font("Rubik", var(--font-weight-thin), var(--size-font-smaller));
+    text-transform: uppercase;
+    letter-spacing: calc(var(--size-tiny) - 0.05rem);
+  }
+
+  &__description {
+    @include m.font(
+      "Rubik",
+      var(--font-weight-regular),
+      var(--size-font-medium)
+    );
+    width: 20ch;
+    text-align: center;
+  }
+
+  &__form {
+    @include m.flex(column);
+    gap: var(--size-smaller);
+    width: min(90%, 30rem);
+
+    & input {
+      width: min(100%, 20rem);
+    }
+    & button {
+      width: min(100%, 20rem);
+    }
+  }
+
+  &__input {
+    padding: calc(var(--size-smaller) + 0.3rem);
+    padding-inline-start: calc(var(--size-smaller) + 0.3rem);
+    border-radius: var(--size-tiny);
+    border: none;
+
+    &::placeholder {
+      font-family: "Rubik", sans-serif;
+      color: var(--color-contrast-primary);
+      opacity: 0.5;
+    }
+  }
+}
+
+@media screen and (min-width: 45rem) {
+  .newsletter {
+    &__form {
+      flex-direction: row;
+
+      & button {
+        width: calc(10rem + 0.5vw);
+      }
+    }
+  }
+
+  .container {
+    &--primary:first-of-type {
+      gap: 0;
+    }
+  }
 }
