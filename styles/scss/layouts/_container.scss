@@ -77,7 +77,7 @@
     @include m.font("Rubik", var(--font-weight-light), var(--size-font-small));
     color: var(--color-contrast-primary);
     opacity: 0.5;
-    width: 47ch;
+    width: 40ch;
     line-height: 1.25;
   }
 
@@ -159,6 +159,10 @@
 
     &__buttons {
       flex-direction: row;
+    }
+
+    &__descriptions {
+      width: 47ch;
     }
 
     &__image {
