@@ -21,7 +21,15 @@ footer {
   }
 
   & a {
-    color: var(--color-primary);
+    color: var(--color-contrast-secondary);
+    text-decoration: none;
+    transition: 500ms ease;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--color-secondary);
+      transition: 200ms ease;
+    }
   }
 }
 
@@ -38,6 +46,13 @@ footer {
 
     & svg {
       color: var(--color-contrast-secondary);
+      transition: 500ms ease;
+
+      &:hover {
+        cursor: pointer;
+        color: var(--color-secondary);
+        transition: 200ms ease;
+      }
     }
   }
 

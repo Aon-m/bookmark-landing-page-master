@@ -78,6 +78,7 @@
     color: var(--color-contrast-primary);
     opacity: 0.5;
     width: 47ch;
+    line-height: 1.25;
   }
 
   &__buttons {
@@ -92,16 +93,26 @@
   &__hidden {
     &-content {
       @include m.flex(column, flex-start);
-      width: min(100%, 40rem);
+      width: min(100%, 35rem);
+      overflow: hidden;
     }
 
     &-title {
       @include m.flex(row, center, space-between);
       padding: calc(var(--size-smaller) + 0.25rem);
+      padding-block-start: 0;
       width: 100%;
       border-block-end: 0.05rem solid var(--color-accent-muted);
+      transition: 500ms ease;
+      cursor: pointer;
+
+      &:hover h3 {
+        color: var(--color-secondary);
+        transition: 200ms ease;
+      }
 
       &:first-of-type {
+        padding-block-start: calc(var(--size-smaller) + 0.25rem);
         border-block: 0.05rem solid var(--color-accent-muted);
       }
 
@@ -113,14 +124,6 @@
         );
         color: var(--color-contrast-primary);
       }
-
-      & button {
-        border: none;
-        background: transparent;
-        color: var(--color-primary);
-        width: calc(var(--size-smaller) + 0.25rem);
-        cursor: pointer;
-      }
     }
 
     &-description {
@@ -129,7 +132,19 @@
         var(--font-weight-light),
         var(--size-font-small)
       );
-      display: none;
+      display: block;
+      z-index: -1;
+      width: 100%;
+      line-height: 1.7;
+      overflow: hidden;
+      max-height: 0;
+      padding: 0 calc(var(--size-smaller) + 0.25rem);
+      margin-block-start: calc(var(--size-smaller) + 0.25rem);
+
+      &--opened {
+        padding: calc(var(--size-smaller) + 0.25rem);
+        margin-block-start: 0;
+      }
     }
   }
 }
@@ -147,6 +162,9 @@
     }
 
     &__image {
+      &--medium {
+        width: 90%;
+      }
       &--decorated {
         &:nth-of-type(2)::before {
           right: -20%;
@@ -181,6 +199,8 @@
   .container {
     &--primary {
       flex-direction: row;
+      min-height: 20rem;
+
       & .container__text-content {
         text-align: left;
         align-items: flex-start;

@@ -13,19 +13,12 @@ header {
     cursor: pointer;
   }
 
-  & ul {
-    @include m.flex(row);
-    gap: var(--size-small);
-  }
-
   & li {
     list-style: none;
   }
 
   & a {
-    text-transform: lowercase;
     text-decoration: none;
-    color: var(--color--primary);
     transition: 500ms ease;
 
     &:hover {
@@ -40,22 +33,88 @@ header {
   }
 
   &--mobile {
+    @include m.flex(column, center, flex-start);
     position: relative;
-    @include m.flex(row, center, space-between);
-    background: var(--color-primary);
     padding: var(--size-medium);
     gap: var(--size-medium);
     width: 100%;
+    min-height: 30rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--color-contrast-primary);
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    & .nav__icons {
+      @include m.flex(row);
+      gap: var(--size-small);
+      color: var(--color-contrast-secondary);
+      justify-self: flex-end;
+      margin-block-start: auto;
+    }
+
+    & a {
+      color: var(--color-contrast-secondary);
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      font-weight: var(--font-weight-thin);
+    }
+
+    & .nav__top {
+      @include m.flex(row, center, space-between);
+      width: 100%;
+    }
+
+    & .nav__logo {
+      color: var(--color-contrast-secondary);
+      color: var(--color-contrast-secondary);
+
+      & #bookmarkSvgShape {
+        fill: var(--color-contrast-primary);
+      }
+    }
+
+    & ul {
+      @include m.flex(column);
+      width: min(100%, 15rem);
+    }
+
+    & li {
+      @include m.flex(row, center);
+      padding-block: calc(var(--size-smaller) + 0.5rem);
+      width: 100%;
+      text-align: center;
+      border-block-end: 0.05rem solid var(--color-accent-muted);
+
+      &:first-of-type {
+        border-block: 0.05rem solid var(--color-accent-muted);
+      }
+    }
 
     & #close-button {
       background: none;
       border: none;
-      font-size: var(--size-font-small);
-      color: var(--color-secondary);
+      width: fit-content;
+      font-size: var(--size-font-medium);
     }
 
     & #close-button:hover {
       cursor: pointer;
+    }
+
+    & button {
+      color: var(--color-contrast-secondary);
+      text-transform: uppercase;
+      border: 0.15rem solid var(--color-contrast-secondary);
+      width: min(100%, 15rem);
+      letter-spacing: 0.1rem;
     }
   }
 
@@ -63,7 +122,8 @@ header {
     width: 100vw;
     border: none;
     max-width: none;
-    margin: none;
+    margin: 0;
+    background: none;
 
     &::backdrop {
       background: rgba(0, 0, 0, 0.6);
@@ -91,7 +151,13 @@ header {
       gap: var(--size-small);
       width: fit-content;
 
+      & ul {
+        @include m.flex(row);
+        gap: var(--size-small);
+      }
+
       & a {
+        color: var(--color-contrast-primary);
         width: var(--size-large);
         text-transform: uppercase;
         @include m.font(
@@ -108,7 +174,8 @@ header {
           var(--font-weight-thin),
           calc(var(--size-font-small) - 0.25rem)
         );
-        padding: calc(var(--size-tiny) + 0.2rem) var(--size-small);
+        padding: calc(var(--size-tiny) + 0.2rem)
+          calc(var(--size-medium) - 0.5rem);
       }
     }
   }
