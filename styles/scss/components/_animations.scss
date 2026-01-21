@@ -1,8 +1,10 @@
 .rotate-forward {
   animation: rotateForward 400ms ease forwards;
+  will-change: transform;
 }
 .rotate-backward {
   animation: rotateBackward 200ms ease forwards;
+  will-change: transform;
 }
 
 @keyframes rotateForward {
@@ -25,10 +27,12 @@
 
 .open-div {
   animation: open-up 400ms ease forwards;
+  will-change: max-height;
 }
 
 .close-div {
   animation: close-down 200ms ease forwards;
+  will-change: max-height;
 }
 
 @keyframes open-up {
