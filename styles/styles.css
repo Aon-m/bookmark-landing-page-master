@@ -362,7 +362,7 @@ body {
   font-style: normal;
   color: var(--color-contrast-primary);
   opacity: 0.5;
-  width: 47ch;
+  width: 40ch;
   line-height: 1.25;
 }
 .container__buttons {
@@ -438,6 +438,9 @@ body {
   }
   .container__buttons {
     flex-direction: row;
+  }
+  .container__descriptions {
+    width: 47ch;
   }
   .container__image--medium {
     width: 90%;
